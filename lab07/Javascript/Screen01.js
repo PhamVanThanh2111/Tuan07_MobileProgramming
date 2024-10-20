@@ -13,6 +13,7 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 
 const Screen01 = ({ navigation }) => {
+  const [inputText, setInputText] = useState('');
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -34,6 +35,7 @@ const Screen01 = ({ navigation }) => {
             style={{ width: 20, height: 20 }}
           />
           <TextInput
+          onChangeText={(text) => setInputText(text)}
             placeholder="Enter your name"
             placeholderTextColor="#999"
             style={styles.inputText}
@@ -51,7 +53,7 @@ const Screen01 = ({ navigation }) => {
             alignItems: 'center',
             justifyContent: 'center',
           }}
-          onPress={()=>{navigation.navigate('Screen02')}}>
+          onPress={()=>{navigation.navigate('Screen02', {inputText})}}>
           <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: 400 }}>
             GET STARTED →
           </Text>
@@ -86,7 +88,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     columnGap: 15,
   },
-  inputText: { flex: 1, height: 45, color: '#333', width: '100%' },
+  inputText: { flex: 1, height: 45, color: '#333', width: '100%' , marginBottom: 10},
   inputContainer: {
     flex: 3,
   },
